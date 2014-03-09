@@ -1,0 +1,101 @@
+public class HelloWorld extends java.lang.Object
+{
+    public java.lang.String s;
+
+    public void <init>()
+    {
+        HelloWorld this;
+
+        this := @this: HelloWorld;
+        specialinvoke this.<java.lang.Object: void <init>()>();
+        this.<HelloWorld: java.lang.String s> = "Hello World";
+        return;
+    }
+
+    public void <init>(java.lang.String)
+    {
+        HelloWorld this;
+        java.lang.String s;
+
+        this := @this: HelloWorld;
+        s := @parameter0: java.lang.String;
+        specialinvoke this.<java.lang.Object: void <init>()>();
+        this.<HelloWorld: java.lang.String s> = "Hello World";
+        this.<HelloWorld: java.lang.String s> = s;
+        return;
+    }
+
+    public void sayHello()
+    {
+        HelloWorld this;
+        java.io.PrintStream $r0;
+        java.lang.String $r1;
+
+        this := @this: HelloWorld;
+        $r0 = <java.lang.System: java.io.PrintStream out>;
+        $r1 = this.<HelloWorld: java.lang.String s>;
+        virtualinvoke $r0.<java.io.PrintStream: void println(java.lang.String)>($r1);
+        return;
+    }
+
+    public void sayHello(java.lang.String)
+    {
+        HelloWorld this;
+        java.lang.String s, $r2, $r3;
+        java.io.PrintStream $r0;
+        java.lang.StringBuilder $r1;
+
+        this := @this: HelloWorld;
+        s := @parameter0: java.lang.String;
+        $r0 = <java.lang.System: java.io.PrintStream out>;
+        $r1 = new java.lang.StringBuilder;
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>()>();
+        $r2 = this.<HelloWorld: java.lang.String s>;
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(",");
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(s);
+        $r3 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+        virtualinvoke $r0.<java.io.PrintStream: void println(java.lang.String)>($r3);
+        return;
+    }
+
+    public java.lang.String getHelloString(int)
+    {
+        HelloWorld this;
+        int sometimes;
+        java.lang.String someString;
+
+        this := @this: HelloWorld;
+        sometimes := @parameter0: int;
+        someString = "";
+        if sometimes <= 10 goto label0;
+
+        someString = "Greater than 10";
+        goto label1;
+
+     label0:
+        someString = "Less than 10";
+
+     label1:
+        return someString;
+    }
+
+    public static void main(java.lang.String[])
+    {
+        java.lang.String[] args;
+        HelloWorld $r0, hw, hw1;
+
+        args := @parameter0: java.lang.String[];
+        $r0 = new HelloWorld;
+        specialinvoke $r0.<HelloWorld: void <init>(java.lang.String)>("Hey, Chicago");
+        hw = $r0;
+        virtualinvoke hw.<HelloWorld: java.lang.String getHelloString(int)>(10);
+        virtualinvoke hw.<HelloWorld: void sayHello()>();
+        virtualinvoke hw.<HelloWorld: void sayHello(java.lang.String)>("With random string");
+        $r0 = new HelloWorld;
+        specialinvoke $r0.<HelloWorld: void <init>()>();
+        hw1 = $r0;
+        virtualinvoke hw1.<HelloWorld: void sayHello()>();
+        return;
+    }
+}
